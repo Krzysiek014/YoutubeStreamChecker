@@ -9,8 +9,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.krzysiek014.GoogleApi.GoogleApi;
+import pl.krzysiek014.Main.YoutubeChannel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
@@ -21,8 +27,11 @@ public class ControllerWindowStyle {
     VBox wall;
     @FXML
     Button addButton;
+
+    GoogleApi api;
+    List<YoutubeChannel> listOfChannels;
     public void initialize() throws IOException {
-        GoogleApi api = new GoogleApi();
+        api = new GoogleApi();
 
         addButton.setOnMouseClicked(e->{
             Stage addWindow = new Stage();
@@ -37,5 +46,18 @@ public class ControllerWindowStyle {
             } catch (IOException e1) {}
         });
 
+        listOfChannels = readFile();
+
+        wall.getChildren().addAll(listOfChannels);
+    }
+
+    private List<YoutubeChannel> readFile() throws IOException {
+        List<YoutubeChannel> l  = new LinkedList<>();
+
+        Scanner scan = new Scanner(new File("StreamerList"));
+        while(scan.hasNextLine()){
+            l.add(api.getChannelInfo(scan.nextLine()));
+        }
+        return l;
     }
 }

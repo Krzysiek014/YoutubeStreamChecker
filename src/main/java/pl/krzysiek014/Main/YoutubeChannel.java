@@ -2,6 +2,8 @@ package pl.krzysiek014.Main;
 
 import com.google.gson.JsonObject;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -29,10 +31,6 @@ public class YoutubeChannel extends AnchorPane {
 
         this.getChildren().setAll(createRectangle().getChildren());
 
-    }
-
-    public YoutubeChannel(){
-        this.getChildren().addAll(createRectangle().getChildren());
     }
 
     public boolean isLive() {
@@ -99,10 +97,10 @@ public class YoutubeChannel extends AnchorPane {
 
         AnchorPane pane = new AnchorPane();
 
-        Rectangle r = new Rectangle(361,74,Color.LIGHTGRAY);
+        Rectangle r = new Rectangle(361,80,Color.LIGHTGRAY);
         Label l = new Label(getName());
-
-        pane.getChildren().addAll(r,l);
+        ImageView iv = new ImageView(new Image(getThumbnails().getAsJsonObject().get("default").getAsJsonObject().get("url").getAsString()));
+        pane.getChildren().addAll(r,l,iv);
 
         r.setX(10);
         r.setY(10);

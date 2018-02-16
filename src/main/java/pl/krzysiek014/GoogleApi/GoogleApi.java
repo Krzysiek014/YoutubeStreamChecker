@@ -16,7 +16,6 @@ public class GoogleApi {
 
     public YoutubeChannel getChannelInfo(String channelID) throws IOException {
 
-        YoutubeChannel channel = new YoutubeChannel();
         JsonObject channelObject = new JsonParser().parse(Jsoup.connect("https://www.googleapis.com/youtube/v3/search?part=snippet&channelId="+channelID+"&type=video&eventType=live&key="+API_KEY)
                                                                .ignoreContentType(true)
                                                                .get()
@@ -29,14 +28,14 @@ public class GoogleApi {
                                                    .get("snippet")
                                                    .getAsJsonObject();
 
-        channel.setName(channelObject.get("channelTitle").getAsString());
-        channel.setLive(channelObject.get("liveBroadcastContent").getAsString().equals("live"));
-        channel.setThumbnails(channelObject.get("thumbnails").getAsJsonObject());
-        channel.setTitle(channelObject.get("title").getAsString());
-        channel.setDescription(channelObject.get("description").getAsString());
+        String name = channelObject.get("channelTitle").getAsString();
+        boolean live = channelObject.get("liveBroadcastContent").getAsString().equals("live");
+        JsonObject thumbnails = channelObject.get("thumbnails").getAsJsonObject();
+        String title = channelObject.get("title").getAsString();
+        String description = channelObject.get("description").getAsString();
 
 
-        return channel;
+        return new YoutubeChannel(live,channelID,description,title,thumbnails,name);
 
     }
 
