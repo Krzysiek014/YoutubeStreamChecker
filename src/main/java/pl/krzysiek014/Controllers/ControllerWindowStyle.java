@@ -24,16 +24,13 @@ import java.util.Scanner;
 public class ControllerWindowStyle {
 
     @FXML
-    VBox wall;
+    private VBox wall;
     @FXML
-    Button addButton, refreshButton;
-
-    GoogleApi api;
-
-    private List<YoutubeChannel> listOfChannels;
+    private Button addButton, refreshButton;
 
     public void initialize() throws IOException {
-        api = new GoogleApi();
+
+        Context context = new Context();
 
         addButton.setOnMouseClicked(e->{
             Stage addWindow = new Stage();
@@ -49,26 +46,18 @@ public class ControllerWindowStyle {
         });
 
         refreshButton.setOnMouseClicked(e->{
+            wall.getChildren().clear();
             try {
-                wall.getChildren().clear();
-                listOfChannels = readFile();
-                wall.getChildren().addAll(listOfChannels);
-            } catch (IOException ignored){}
+                context.setListOfChannels(context.readFile());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            wall.getChildren().addAll(context.getListOfChannels());
+
         });
 
-        listOfChannels = readFile();
-
-
-        wall.getChildren().addAll(listOfChannels);
+        context.setListOfChannels(context.readFile());
+        wall.getChildren().addAll(context.getListOfChannels());
     }
 
-    public List<YoutubeChannel> readFile() throws IOException {
-        List<YoutubeChannel> l  = new LinkedList<>();
-
-        Scanner scan = new Scanner(new File("StreamerList"));
-        while(scan.hasNextLine()){
-            l.add(api.getChannelInfo(scan.nextLine()));
-        }
-        return l;
-    }
 }
