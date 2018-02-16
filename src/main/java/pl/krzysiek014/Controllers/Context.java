@@ -13,8 +13,10 @@ import java.util.Scanner;
  * Created by Krzysiek014 on 16.02.2018.
  */
 public class Context {
+
     private final static Context instance = new Context();
     private GoogleApi api = new GoogleApi();
+    private List<YoutubeChannel> listOfChannels = new LinkedList<>();
 
     public static Context getInstance() {
         return instance;
@@ -23,9 +25,6 @@ public class Context {
     public void setListOfChannels(List<YoutubeChannel> listOfChannels) {
         this.listOfChannels = listOfChannels;
     }
-
-    private List<YoutubeChannel> listOfChannels = new LinkedList<>();
-
 
     public List<YoutubeChannel> getListOfChannels() {
         return listOfChannels;
@@ -39,5 +38,9 @@ public class Context {
             l.add(api.getChannelInfo(scan.nextLine()));
         }
         return l;
+    }
+
+    public void addToList(YoutubeChannel yc){
+        listOfChannels.add(yc);
     }
 }

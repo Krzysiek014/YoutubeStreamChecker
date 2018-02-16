@@ -30,8 +30,6 @@ public class ControllerWindowStyle {
 
     public void initialize() throws IOException {
 
-        Context context = new Context();
-
         addButton.setOnMouseClicked(e->{
             Stage addWindow = new Stage();
             FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("AddStreamer.fxml"));
@@ -48,16 +46,16 @@ public class ControllerWindowStyle {
         refreshButton.setOnMouseClicked(e->{
             wall.getChildren().clear();
             try {
-                context.setListOfChannels(context.readFile());
+                Context.getInstance().setListOfChannels(Context.getInstance().readFile());
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            wall.getChildren().addAll(context.getListOfChannels());
+            wall.getChildren().addAll(Context.getInstance().getListOfChannels());
 
         });
 
-        context.setListOfChannels(context.readFile());
-        wall.getChildren().addAll(context.getListOfChannels());
+        Context.getInstance().setListOfChannels(Context.getInstance().readFile());
+        wall.getChildren().addAll(Context.getInstance().getListOfChannels());
     }
 
 }
