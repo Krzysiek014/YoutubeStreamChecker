@@ -29,7 +29,9 @@ public class ControllerWindowStyle {
     Button addButton;
 
     GoogleApi api;
-    List<YoutubeChannel> listOfChannels;
+
+    private List<YoutubeChannel> listOfChannels;
+
     public void initialize() throws IOException {
         api = new GoogleApi();
 

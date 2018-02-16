@@ -1,6 +1,7 @@
 package pl.krzysiek014.Main;
 
 import com.google.gson.JsonObject;
+import com.sun.javafx.font.FontFactory;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -99,13 +100,30 @@ public class YoutubeChannel extends AnchorPane {
 
         Rectangle r = new Rectangle(361,80,Color.LIGHTGRAY);
         Label l = new Label(getName());
+        Label live = new Label();
         ImageView iv = new ImageView(new Image(getThumbnails().getAsJsonObject().get("default").getAsJsonObject().get("url").getAsString()));
-        pane.getChildren().addAll(r,l,iv);
+
+        pane.getChildren().addAll(r,l,iv,live);
+
+        iv.setY(10);
+        iv.setFitHeight(80);
 
         r.setX(10);
         r.setY(10);
-        l.setLayoutX(200);
+
+        l.setLayoutX(130);
         l.setLayoutY(10);
+
+        if(isLive()){
+            live.setText("ONLINE");
+            live.setTextFill(Color.RED);
+        }else{
+            live.setText("OFFLINE");
+            live.setTextFill(Color.BLACK);
+        }
+        live.setLayoutX(130);
+        live.setLayoutY(50);
+
         return pane;
     }
 }
