@@ -26,7 +26,7 @@ public class ControllerWindowStyle {
     @FXML
     VBox wall;
     @FXML
-    Button addButton;
+    Button addButton, refreshButton;
 
     GoogleApi api;
 
@@ -48,12 +48,21 @@ public class ControllerWindowStyle {
             } catch (IOException e1) {}
         });
 
+        refreshButton.setOnMouseClicked(e->{
+            try {
+                wall.getChildren().clear();
+                listOfChannels = readFile();
+                wall.getChildren().addAll(listOfChannels);
+            } catch (IOException ignored){}
+        });
+
         listOfChannels = readFile();
+
 
         wall.getChildren().addAll(listOfChannels);
     }
 
-    private List<YoutubeChannel> readFile() throws IOException {
+    public List<YoutubeChannel> readFile() throws IOException {
         List<YoutubeChannel> l  = new LinkedList<>();
 
         Scanner scan = new Scanner(new File("StreamerList"));
