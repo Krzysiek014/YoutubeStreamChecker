@@ -1,13 +1,15 @@
 package pl.krzysiek014.Main;
 
 import com.google.gson.JsonObject;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
  */
-public class YoutubeChannel extends Rectangle {
+public class YoutubeChannel extends AnchorPane {
 
     private boolean live;
     private String channelID;
@@ -24,9 +26,14 @@ public class YoutubeChannel extends Rectangle {
         this.title = t;
         this.thumbnails = img;
         this.name = n;
+
+        this.getChildren().setAll(createRectangle().getChildren());
+
     }
 
-    public YoutubeChannel(){}
+    public YoutubeChannel(){
+        this.getChildren().addAll(createRectangle().getChildren());
+    }
 
     public boolean isLive() {
         return live;
@@ -86,5 +93,21 @@ public class YoutubeChannel extends Rectangle {
                 ", thumbnails=" + thumbnails +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    private AnchorPane createRectangle(){
+
+        AnchorPane pane = new AnchorPane();
+
+        Rectangle r = new Rectangle(361,74,Color.LIGHTGRAY);
+        Label l = new Label(getName());
+
+        pane.getChildren().addAll(r,l);
+
+        r.setX(10);
+        r.setY(10);
+        l.setLayoutX(200);
+        l.setLayoutY(10);
+        return pane;
     }
 }

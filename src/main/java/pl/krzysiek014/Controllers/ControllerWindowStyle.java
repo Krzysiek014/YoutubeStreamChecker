@@ -21,8 +21,6 @@ public class ControllerWindowStyle {
     VBox wall;
     @FXML
     Button addButton;
-
-
     public void initialize() throws IOException {
         GoogleApi api = new GoogleApi();
 
