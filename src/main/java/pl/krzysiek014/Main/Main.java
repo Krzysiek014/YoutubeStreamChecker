@@ -1,6 +1,7 @@
 package pl.krzysiek014.Main;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -31,7 +32,6 @@ public class Main extends Application {
 
     private void positioning(Stage ps){
         Rectangle2D screen = Screen.getPrimary().getBounds();
-        System.out.println(ps.getWidth());
         ps.setX(screen.getMaxX()-ps.getWidth()+6); //Adding 6 because of scroll
         ps.setY(screen.getMaxY()-ps.getHeight()-38); // Subtract 38 because of taskbar
     }
