@@ -36,7 +36,7 @@ public class GoogleApi {
 
 
             return new YoutubeChannel(live, channelID, description, title, thumbnails, name);
-        }catch(IndexOutOfBoundsException iobe){
+        }catch(Exception e){
             return new YoutubeChannel(false, channelID);
         }
     }
@@ -59,7 +59,7 @@ public class GoogleApi {
             JsonObject thumbnails = channelObject.get("thumbnails").getAsJsonObject();
 
             return new YoutubeChannel(channelID, thumbnails, name);
-        }catch(IndexOutOfBoundsException iobe){
+        }catch(Exception e){
             return new YoutubeChannel(false, channelID);
         }
     }
