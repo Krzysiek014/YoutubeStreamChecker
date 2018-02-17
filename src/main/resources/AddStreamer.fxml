@@ -17,6 +17,9 @@
       <TextField fx:id="idText" layoutX="35.0" layoutY="42.0" prefHeight="25.0" prefWidth="262.0" />
       <Button fx:id="addButton" layoutX="245.0" layoutY="110.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" />
       <ImageView fx:id="avatar" fitHeight="88.0" fitWidth="88.0" layoutX="14.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="name" layoutX="108.0" layoutY="83.0" prefHeight="17.0" prefWidth="123.0" text="" />
+      <Label fx:id="name" layoutX="108.0" layoutY="83.0" prefHeight="17.0" prefWidth="123.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>

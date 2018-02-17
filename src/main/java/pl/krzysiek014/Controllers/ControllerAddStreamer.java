@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pl.krzysiek014.GoogleApi.GoogleApi;
 import pl.krzysiek014.Main.YoutubeChannel;
@@ -47,7 +48,13 @@ public class ControllerAddStreamer {
         });
 
         checkButton.setOnMouseClicked(e->{
-            name.setText("ABC");
+            try {
+                YoutubeChannel yc = api.getChannel(idText.getText());
+                name.setText(yc.getName());
+                avatar.setImage(new Image(yc.getThumbnails().get("default").getAsJsonObject().get("url").getAsString()));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
     }
