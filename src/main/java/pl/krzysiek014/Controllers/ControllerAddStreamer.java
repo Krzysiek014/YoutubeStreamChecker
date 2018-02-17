@@ -3,7 +3,9 @@ package pl.krzysiek014.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import pl.krzysiek014.GoogleApi.GoogleApi;
 import pl.krzysiek014.Main.YoutubeChannel;
 
@@ -20,6 +22,10 @@ public class ControllerAddStreamer {
     private Button addButton, checkButton;
     @FXML
     private TextField idText;
+    @FXML
+    private Label name;
+    @FXML
+    private ImageView avatar;
 
     public void initialize(){
         GoogleApi api = new GoogleApi();
@@ -41,7 +47,7 @@ public class ControllerAddStreamer {
         });
 
         checkButton.setOnMouseClicked(e->{
-            //TODO
+            name.setText("ABC");
         });
 
     }
