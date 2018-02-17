@@ -14,7 +14,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class YoutubeChannel extends AnchorPane {
 
-    private boolean live;
+    private boolean live = false;
     private String channelID;
     private String description;
     private String title;
@@ -40,6 +40,8 @@ public class YoutubeChannel extends AnchorPane {
         this.channelID = id;
         this.thumbnails = img;
         this.name = n;
+
+        this.getChildren().setAll(createRectangle().getChildren());
     }
 
     public YoutubeChannel(boolean exist, String id){

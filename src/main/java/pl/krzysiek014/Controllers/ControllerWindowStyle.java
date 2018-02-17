@@ -8,15 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import pl.krzysiek014.GoogleApi.GoogleApi;
 import pl.krzysiek014.Main.YoutubeChannel;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
@@ -44,7 +38,6 @@ public class ControllerWindowStyle {
         });
 
         refreshButton.setOnMouseClicked(e->{
-            // Temporary solution while adding channels while they are not online does not work
             wall.getChildren().clear();
             try {
                 Context.getInstance().setListOfChannels(Context.getInstance().readFile());
@@ -60,5 +53,4 @@ public class ControllerWindowStyle {
         Context.getInstance().setListOfChannels(Context.getInstance().readFile());
         wall.getChildren().addAll(Context.getInstance().getListOfChannels());
     }
-
 }

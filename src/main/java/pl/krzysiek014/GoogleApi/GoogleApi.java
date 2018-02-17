@@ -37,7 +37,7 @@ public class GoogleApi {
 
             return new YoutubeChannel(live, channelID, description, title, thumbnails, name);
         }catch(Exception e){
-            return new YoutubeChannel(false, channelID);
+            return getChannel(channelID);
         }
     }
 
