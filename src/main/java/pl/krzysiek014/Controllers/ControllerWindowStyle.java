@@ -52,7 +52,7 @@ public class ControllerWindowStyle {
                 e1.printStackTrace();
             }
             for(YoutubeChannel yc : Context.getInstance().getListOfChannels()) {
-                if(yc.isExist()) wall.getChildren().addAll();
+                if(yc.isExist()) wall.getChildren().add(yc);
             }
 
         });
