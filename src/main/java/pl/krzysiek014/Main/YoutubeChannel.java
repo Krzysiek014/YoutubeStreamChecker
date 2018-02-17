@@ -20,6 +20,7 @@ public class YoutubeChannel extends AnchorPane {
     private String title;
     private JsonObject thumbnails;
     private String name;
+    private boolean exist = true;
 
     public YoutubeChannel(boolean l, String id, String desc, String t, JsonObject img, String n){
 
@@ -39,7 +40,11 @@ public class YoutubeChannel extends AnchorPane {
         this.channelID = id;
         this.thumbnails = img;
         this.name = n;
+    }
 
+    public YoutubeChannel(boolean exist, String id){
+        this.exist = exist;
+        this.channelID = id;
     }
 
     public boolean isLive() {
@@ -90,6 +95,13 @@ public class YoutubeChannel extends AnchorPane {
         this.name = name;
     }
 
+    public boolean isExist() {
+        return exist;
+    }
+
+    public void setExist(boolean exist) {
+        this.exist = exist;
+    }
     @Override
     public String toString() {
         return "YoutubeChannel{" +
