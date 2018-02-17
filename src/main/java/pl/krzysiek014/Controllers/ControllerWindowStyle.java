@@ -44,13 +44,16 @@ public class ControllerWindowStyle {
         });
 
         refreshButton.setOnMouseClicked(e->{
+            // Temporary solution while adding channels while they are not online does not work
             wall.getChildren().clear();
             try {
                 Context.getInstance().setListOfChannels(Context.getInstance().readFile());
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            wall.getChildren().addAll(Context.getInstance().getListOfChannels());
+            for(YoutubeChannel yc : Context.getInstance().getListOfChannels()) {
+                if(yc.isExist()) wall.getChildren().addAll();
+            }
 
         });
 
