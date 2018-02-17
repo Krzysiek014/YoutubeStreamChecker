@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="141.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek014.Controllers.ControllerAddStreamer">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek014.Controllers.ControllerAddStreamer">
    <children>
       <Button fx:id="checkButton" layoutX="245.0" layoutY="79.0" mnemonicParsing="false" text="Check" />
       <Label alignment="CENTER" layoutX="91.0" layoutY="14.0" prefHeight="20.0" prefWidth="149.0" text="Enter Channel ID">
@@ -15,5 +16,7 @@
       </Label>
       <TextField fx:id="idText" layoutX="35.0" layoutY="42.0" prefHeight="25.0" prefWidth="262.0" />
       <Button fx:id="addButton" layoutX="245.0" layoutY="110.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" />
+      <ImageView fx:id="avatar" fitHeight="88.0" fitWidth="88.0" layoutX="14.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="name" layoutX="108.0" layoutY="83.0" prefHeight="17.0" prefWidth="123.0" text="Label" />
    </children>
 </AnchorPane>
