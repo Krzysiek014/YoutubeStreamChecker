@@ -61,12 +61,21 @@ public class ControllerAddStreamer {
 
         // TODO implement isExist() function
         checkButton.setOnMouseClicked(e->{
+            YoutubeChannel yc = new YoutubeChannel(false,idText.getText());
             try {
-                YoutubeChannel yc = api.getChannel(idText.getText());
-                name.setText(yc.getName());
-                avatar.setImage(new Image(yc.getThumbnails().get("default").getAsJsonObject().get("url").getAsString()));
+               yc = api.getChannel(idText.getText());
             } catch (IOException e1) {
                 e1.printStackTrace();
+            }
+            if(yc.isExist()) {
+                name.setText(yc.getName());
+                avatar.setImage(new Image(yc.getThumbnails().get("default").getAsJsonObject().get("url").getAsString()));
+            }else{
+                name.setText("");
+                avatar.setImage(null);
+                idText.clear();
+                idText.setPromptText("Channel is not live right now");
+                idText.setStyle("-fx-prompt-text-fill: red");
             }
         });
 
