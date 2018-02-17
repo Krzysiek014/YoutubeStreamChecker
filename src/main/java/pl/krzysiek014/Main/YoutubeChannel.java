@@ -34,6 +34,14 @@ public class YoutubeChannel extends AnchorPane {
 
     }
 
+    public YoutubeChannel(String id, JsonObject img, String n){
+
+        this.channelID = id;
+        this.thumbnails = img;
+        this.name = n;
+
+    }
+
     public boolean isLive() {
         return live;
     }

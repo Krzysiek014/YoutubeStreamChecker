@@ -39,4 +39,23 @@ public class GoogleApi {
 
     }
 
+    public YoutubeChannel getChannel(String channelID) throws IOException {
+        JsonObject channelObject = new JsonParser().parse(Jsoup.connect("https://www.googleapis.com/youtube/v3/channels?part=snippet&id="+channelID+"&key="+API_KEY)
+                .ignoreContentType(true)
+                .get()
+                .text())
+                .getAsJsonObject()
+                .get("items")
+                .getAsJsonArray()
+                .get(0)
+                .getAsJsonObject()
+                .get("snippet")
+                .getAsJsonObject();
+
+        String name = channelObject.get("title").getAsString();
+        JsonObject thumbnails = channelObject.get("thumbnails").getAsJsonObject();
+
+        return new YoutubeChannel(channelID, thumbnails, name);
+    }
+
 }
