@@ -11,6 +11,9 @@ import javafx.stage.StageStyle;
 import pl.krzysiek014.Main.YoutubeChannel;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
@@ -44,13 +47,30 @@ public class ControllerWindowStyle {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            for(YoutubeChannel yc : Context.getInstance().getListOfChannels()) {
-                if(yc.isExist()) wall.getChildren().add(yc);
-            }
+
+            wall.getChildren().addAll(sortList());
 
         });
 
         Context.getInstance().setListOfChannels(Context.getInstance().readFile());
-        wall.getChildren().addAll(Context.getInstance().getListOfChannels());
+        wall.getChildren().addAll(sortList());
+    }
+
+    private List<YoutubeChannel> sortList(){
+        List<YoutubeChannel> l1 = new LinkedList<>();
+        List<YoutubeChannel> l2 = new LinkedList<>();
+        for(YoutubeChannel yc : Context.getInstance().getListOfChannels()) {
+            if(yc.isExist())
+                if(yc.isLive()){
+                    l1.add(yc);
+                }else {
+                    l2.add(yc);
+                }
+
+        }
+        l1.sort(Comparator.comparing(YoutubeChannel::getName));
+        l2.sort(Comparator.comparing(YoutubeChannel::getName));
+        l1.addAll(l2);
+        return l1;
     }
 }
