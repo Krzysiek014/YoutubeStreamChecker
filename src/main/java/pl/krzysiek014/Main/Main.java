@@ -1,7 +1,6 @@
 package pl.krzysiek014.Main;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -9,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pl.krzysiek014.Controllers.HostServicesProvider;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
@@ -20,6 +20,7 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
+        HostServicesProvider.getInstance().setHostServices(getHostServices());
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("WindowStyle.fxml"));
         AnchorPane ap = loader.load();
         Scene scene = new Scene(ap);

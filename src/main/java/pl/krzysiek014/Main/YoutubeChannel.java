@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import pl.krzysiek014.Controllers.HostServicesProvider;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
@@ -159,6 +160,9 @@ public class YoutubeChannel extends AnchorPane {
         if(isLive()){
             live.setText("ONLINE    " + String.valueOf(getViewers()));
             live.setTextFill(Color.RED);
+            this.setOnMouseClicked(e->{
+                HostServicesProvider.getInstance().getHostServices().showDocument("https://www.youtube.com/embed/"+getVideoId()+"?autoplay=1");
+            });
         }else{
             live.setText("OFFLINE");
             live.setTextFill(Color.BLACK);
