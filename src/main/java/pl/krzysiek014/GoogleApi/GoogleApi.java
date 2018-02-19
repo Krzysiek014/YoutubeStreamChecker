@@ -33,9 +33,9 @@ public class GoogleApi {
             JsonObject thumbnails = channelObject.get("thumbnails").getAsJsonObject();
             String title = channelObject.get("title").getAsString();
             String description = channelObject.get("description").getAsString();
+            String videoId = thumbnails.get("default").getAsJsonObject().get("url").getAsString().replace("https://i.ytimg.com/vi/","").replace("/default_live.jpg","");
 
-
-            return new YoutubeChannel(live, channelID, description, title, thumbnails, name);
+            return new YoutubeChannel(live, channelID, description, title, thumbnails, name,videoId);
         }catch(Exception e){
             return getChannel(channelID);
         }

@@ -21,8 +21,9 @@ public class YoutubeChannel extends AnchorPane {
     private JsonObject thumbnails;
     private String name;
     private boolean exist = true;
+    private String videoId;
 
-    public YoutubeChannel(boolean l, String id, String desc, String t, JsonObject img, String n){
+    public YoutubeChannel(boolean l, String id, String desc, String t, JsonObject img, String n, String vid){
 
         this.live = l;
         this.channelID = id;
@@ -30,6 +31,7 @@ public class YoutubeChannel extends AnchorPane {
         this.title = t;
         this.thumbnails = img;
         this.name = n;
+        this.videoId = vid;
 
         this.getChildren().setAll(createRectangle().getChildren());
 
@@ -147,5 +149,13 @@ public class YoutubeChannel extends AnchorPane {
         live.setLayoutY(50);
 
         return pane;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
     }
 }
