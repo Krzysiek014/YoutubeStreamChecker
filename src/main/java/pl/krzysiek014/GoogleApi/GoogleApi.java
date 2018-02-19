@@ -34,8 +34,9 @@ public class GoogleApi {
             String title = channelObject.get("title").getAsString();
             String description = channelObject.get("description").getAsString();
             String videoId = thumbnails.get("default").getAsJsonObject().get("url").getAsString().replace("https://i.ytimg.com/vi/","").replace("/default_live.jpg","");
+            int viewersCount = getCurrentViewers(videoId);
 
-            return new YoutubeChannel(live, channelID, description, title, thumbnails, name,videoId);
+            return new YoutubeChannel(live, channelID, description, title, thumbnails, name,videoId,viewersCount);
         }catch(Exception e){
             return getChannel(channelID);
         }
@@ -64,4 +65,20 @@ public class GoogleApi {
         }
     }
 
+    public int getCurrentViewers(String videoId) throws IOException {
+        JsonObject videoListResponse = new JsonParser().parse(Jsoup.connect("https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id="+videoId+"&key="+API_KEY)
+                .ignoreContentType(true)
+                .get()
+                .text())
+                .getAsJsonObject()
+                .get("items")
+                .getAsJsonArray()
+                .get(0)
+                .getAsJsonObject();
+        return videoListResponse
+                .get("liveStreamingDetails")
+                .getAsJsonObject()
+                .get("concurrentViewers")
+                .getAsInt();
+    }
 }
