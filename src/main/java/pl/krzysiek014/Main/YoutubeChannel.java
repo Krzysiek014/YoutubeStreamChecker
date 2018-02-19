@@ -1,7 +1,6 @@
 package pl.krzysiek014.Main;
 
 import com.google.gson.JsonObject;
-import com.sun.javafx.font.FontFactory;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -108,6 +107,23 @@ public class YoutubeChannel extends AnchorPane {
     public void setExist(boolean exist) {
         this.exist = exist;
     }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public int getViewers() {
+        return viewers;
+    }
+
+    public void setViewers(int viewers) {
+        this.viewers = viewers;
+    }
+
     @Override
     public String toString() {
         return "YoutubeChannel{" +
@@ -141,7 +157,7 @@ public class YoutubeChannel extends AnchorPane {
         l.setLayoutY(10);
 
         if(isLive()){
-            live.setText("ONLINE");
+            live.setText("ONLINE    " + String.valueOf(getViewers()));
             live.setTextFill(Color.RED);
         }else{
             live.setText("OFFLINE");
@@ -153,19 +169,4 @@ public class YoutubeChannel extends AnchorPane {
         return pane;
     }
 
-    public String getVideoId() {
-        return videoId;
-    }
-
-    public void setVideoId(String videoId) {
-        this.videoId = videoId;
-    }
-
-    public int getViewers() {
-        return viewers;
-    }
-
-    public void setViewers(int viewers) {
-        this.viewers = viewers;
-    }
 }
