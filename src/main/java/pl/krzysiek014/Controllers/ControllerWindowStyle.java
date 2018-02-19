@@ -1,5 +1,6 @@
 package pl.krzysiek014.Controllers;
 
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -40,7 +41,7 @@ public class ControllerWindowStyle {
             } catch (IOException e1) {}
         });
 
-        refreshButton.setOnMouseClicked(e->{
+        refreshButton.setOnAction(e->{
             wall.getChildren().clear();
             try {
                 Context.getInstance().setListOfChannels(Context.getInstance().readFile());
@@ -54,6 +55,18 @@ public class ControllerWindowStyle {
 
         Context.getInstance().setListOfChannels(Context.getInstance().readFile());
         wall.getChildren().addAll(sortList());
+
+        AnimationTimer at = new AnimationTimer() {
+            long nano = System.nanoTime();
+            @Override
+            public void handle(long now) {
+                if((now-nano)/1000000000>20){
+                    nano = now;
+                    refreshButton.fire();
+                }
+            }};
+        at.start();
+
     }
 
     private List<YoutubeChannel> sortList(){
@@ -68,7 +81,7 @@ public class ControllerWindowStyle {
                 }
 
         }
-        l1.sort(Comparator.comparing(YoutubeChannel::getName));
+        l1.sort(Comparator.comparing(YoutubeChannel::getViewers).reversed());
         l2.sort(Comparator.comparing(YoutubeChannel::getName));
         l1.addAll(l2);
         return l1;

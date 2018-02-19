@@ -158,7 +158,7 @@ public class YoutubeChannel extends AnchorPane {
         l.setLayoutY(10);
 
         if(isLive()){
-            live.setText("ONLINE    " + String.valueOf(getViewers()));
+            live.setText("ONLINE    " + String.format("%,d",getViewers()));
             live.setTextFill(Color.RED);
             this.setOnMouseClicked(e->{
                 HostServicesProvider.getInstance().getHostServices().showDocument("https://www.youtube.com/embed/"+getVideoId()+"?autoplay=1");
