@@ -163,9 +163,13 @@ public class YoutubeChannel extends AnchorPane {
             this.setOnMouseClicked(e->{
                 HostServicesProvider.getInstance().getHostServices().showDocument("https://www.youtube.com/embed/"+getVideoId()+"?autoplay=1");
             });
+            this.setOnMouseEntered(e->r.setFill(Color.valueOf("#9aa7ad")));
+            this.setOnMouseExited(e->r.setFill(Color.LIGHTGRAY));
         }else{
             live.setText("OFFLINE");
             live.setTextFill(Color.BLACK);
+            this.setOnMouseEntered(e->r.setFill(Color.valueOf("#9aa7ad")));
+            this.setOnMouseExited(e->r.setFill(Color.LIGHTGRAY));
         }
         live.setLayoutX(130);
         live.setLayoutY(50);
