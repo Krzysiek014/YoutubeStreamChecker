@@ -13,6 +13,7 @@ import pl.krzysiek014.Main.YoutubeChannel;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by Krzysiek014 on 16.02.2018.
@@ -31,9 +32,21 @@ public class ControllerAddStreamer {
     public void initialize(){
         GoogleApi api = new GoogleApi();
         // Init button actions
-        //TODO adding channels while they are not live
         addButton.setOnMouseClicked(e->{
             YoutubeChannel yc = new YoutubeChannel(false, idText.getText());
+            boolean isNew = true;
+            try {
+                List<YoutubeChannel> list = Context.getInstance().readFile();
+                for (YoutubeChannel s: list){
+                    if(s.getChannelID().equals(idText.getText())){
+                        isNew = false;
+                        break;
+                    }
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            if(isNew) {
                 try {
                     yc = api.getChannelInfo(idText.getText());
                 } catch (IOException ignored) {
@@ -57,9 +70,13 @@ public class ControllerAddStreamer {
                     idText.setPromptText("Channel is not live right now");
                     idText.setStyle("-fx-prompt-text-fill: red");
                 }
+            }else{
+                idText.clear();
+                idText.setPromptText("Channel already exist in the list");
+                idText.setStyle("-fx-prompt-text-fill: green");
+            }
         });
 
-        // TODO implement isExist() function
         checkButton.setOnMouseClicked(e->{
             YoutubeChannel yc = new YoutubeChannel(false,idText.getText());
             try {
