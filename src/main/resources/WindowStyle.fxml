@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -9,4 +10,5 @@
    </ScrollPane>
    <Button fx:id="addButton" layoutY="549.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="81.0" text="Add"/>
    <Button fx:id="refreshButton" layoutX="81.0" layoutY="549.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="81.0" text="Refresh"/>
+   <ImageView fx:id="sButton" fitHeight="22.0" fitWidth="22.0" layoutX="346.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true"/>
 </AnchorPane>
