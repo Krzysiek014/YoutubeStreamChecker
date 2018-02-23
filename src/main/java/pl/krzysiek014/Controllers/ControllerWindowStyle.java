@@ -37,7 +37,15 @@ public class ControllerWindowStyle {
 
         sButton.setOnMouseClicked(e->{
             Stage stage = new Stage();
-            stage.show();
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("SettingWindow.fxml"));
+            try {
+                AnchorPane ap = loader.load();
+                Scene scene = new Scene(ap);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.initStyle(StageStyle.UTILITY);
+                stage.show();
+            } catch (IOException e1) {}
         });
 
         addButton.setOnMouseClicked(e->{
