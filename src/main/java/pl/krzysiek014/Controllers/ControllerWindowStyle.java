@@ -1,6 +1,7 @@
 package pl.krzysiek014.Controllers;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,15 +43,8 @@ public class ControllerWindowStyle {
         });
 
         refreshButton.setOnAction(e->{
-            wall.getChildren().clear();
-            try {
-                Context.getInstance().setListOfChannels(Context.getInstance().readFile());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-            wall.getChildren().addAll(sortList());
-
+            Thread t = new Thread(()->update());
+            t.start();
         });
 
         Context.getInstance().setListOfChannels(Context.getInstance().readFile());
@@ -67,6 +61,16 @@ public class ControllerWindowStyle {
             }};
         at.start();
 
+    }
+
+    private void update(){
+        try {
+            Context.getInstance().setListOfChannels(Context.getInstance().readFile());
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        Platform.runLater(()->wall.getChildren().clear());
+        Platform.runLater(()->wall.getChildren().addAll(sortList()));
     }
 
     private List<YoutubeChannel> sortList(){
