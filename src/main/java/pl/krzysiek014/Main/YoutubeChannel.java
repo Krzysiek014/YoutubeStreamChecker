@@ -45,7 +45,7 @@ public class YoutubeChannel extends AnchorPane {
         this.thumbnails = img;
         this.name = n;
 
-        this.getChildren().setAll(createRectangle().getChildren());
+        if(Settings.getInstance().getProperty("show-offline").equals("true")) this.getChildren().setAll(createRectangle().getChildren());
     }
 
     public YoutubeChannel(boolean exist, String id){
