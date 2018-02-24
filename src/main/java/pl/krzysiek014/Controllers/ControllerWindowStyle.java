@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pl.krzysiek014.Main.Settings;
 import pl.krzysiek014.Main.YoutubeChannel;
 
 import java.io.IOException;
@@ -75,7 +76,7 @@ public class ControllerWindowStyle {
             public void handle(long now) {
                 if((now-nano)/1000000000>20){
                     nano = now;
-                    refreshButton.fire();
+                    if(Settings.getInstance().getProperty("auto-refresh").equals("true")) refreshButton.fire();
                 }
             }};
         at.start();
