@@ -31,5 +31,6 @@ public class ControllerSettingsWindow {
             ((Node) e.getSource()).getScene().getWindow().hide();
         });
 
+        cancelButton.setOnAction(e-> ((Node) e.getSource()).getScene().getWindow().hide());
     }
 }
