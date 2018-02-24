@@ -20,6 +20,8 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
+        Settings.getInstance().loadProperties();
+
         HostServicesProvider.getInstance().setHostServices(getHostServices());
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("WindowStyle.fxml"));
         AnchorPane ap = loader.load();

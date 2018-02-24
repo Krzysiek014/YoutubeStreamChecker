@@ -5,21 +5,22 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="253.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek014.Controllers.ControllerSettingsWindow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="168.0" prefWidth="253.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek014.Controllers.ControllerSettingsWindow">
     <CheckBox fx:id="showOffline" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" text="Show offline channels">
         <font>
-          <Font size="14.0"/>
+            <Font size="14.0"/>
         </font>
     </CheckBox>
     <CheckBox fx:id="hideButtons" layoutX="24.0" layoutY="42.0" mnemonicParsing="false" text="Hide Add/Refresh buttons">
         <font>
-          <Font size="14.0"/>
+            <Font size="14.0"/>
         </font>
     </CheckBox>
     <CheckBox fx:id="enableAuto" layoutX="24.0" layoutY="70.0" mnemonicParsing="false" text="Enable Auto-refreshing">
         <font>
-          <Font size="14.0"/>
+            <Font size="14.0"/>
         </font>
     </CheckBox>
+    <Button fx:id="saveButton" layoutX="127.0" layoutY="129.0" mnemonicParsing="false" text="Save"/>
+    <Button fx:id="cancelButton" layoutX="185.0" layoutY="129.0" mnemonicParsing="false" text="Cancel"/>
 </AnchorPane>
