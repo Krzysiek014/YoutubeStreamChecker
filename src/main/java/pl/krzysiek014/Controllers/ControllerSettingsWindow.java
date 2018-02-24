@@ -19,6 +19,10 @@ public class ControllerSettingsWindow {
     private Button saveButton, cancelButton;
     public void initialize(){
 
+        showOffline.setSelected(Boolean.parseBoolean(Settings.getInstance().getProperty("show-offline")));
+        hideButtons.setSelected(Boolean.parseBoolean(Settings.getInstance().getProperty("hide-buttons")));
+        enableAuto.setSelected(Boolean.parseBoolean(Settings.getInstance().getProperty("auto-refresh")));
+
         saveButton.setOnAction(e->{
             Settings.getInstance().setProperty("show-offline",Boolean.toString(showOffline.isSelected()));
             Settings.getInstance().setProperty("hide-buttons",Boolean.toString(hideButtons.isSelected()));
