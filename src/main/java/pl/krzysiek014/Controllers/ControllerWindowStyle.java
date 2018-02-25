@@ -74,9 +74,11 @@ public class ControllerWindowStyle {
 
         AnimationTimer at = new AnimationTimer() {
             long nano = System.nanoTime();
+            double interval = Double.valueOf(Settings.getInstance().getProperty("time-interval"));
             @Override
             public void handle(long now) {
-                if((now-nano)/1000000000>20){
+                if((now-nano)/1000000000>interval){
+                    interval = Double.valueOf(Settings.getInstance().getProperty("time-interval"));
                     nano = now;
                     if(Settings.getInstance().getProperty("auto-refresh").equals("true")) refreshButton.fire();
                 }

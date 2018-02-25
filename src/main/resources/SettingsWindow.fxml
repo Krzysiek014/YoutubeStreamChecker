@@ -5,22 +5,30 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="168.0" prefWidth="253.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek014.Controllers.ControllerSettingsWindow">
-    <CheckBox fx:id="showOffline" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" text="Show offline channels">
-        <font>
-            <Font size="14.0"/>
-        </font>
-    </CheckBox>
-    <CheckBox fx:id="hideButtons" layoutX="24.0" layoutY="42.0" mnemonicParsing="false" text="Hide Add/Refresh buttons">
-        <font>
-            <Font size="14.0"/>
-        </font>
-    </CheckBox>
-    <CheckBox fx:id="enableAuto" layoutX="24.0" layoutY="70.0" mnemonicParsing="false" text="Enable Auto-refreshing">
-        <font>
-            <Font size="14.0"/>
-        </font>
-    </CheckBox>
-    <Button fx:id="saveButton" layoutX="127.0" layoutY="129.0" mnemonicParsing="false" text="Save"/>
-    <Button fx:id="cancelButton" layoutX="185.0" layoutY="129.0" mnemonicParsing="false" text="Cancel"/>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="253.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.krzysiek014.Controllers.ControllerSettingsWindow">
+   <children>
+       <CheckBox fx:id="showOffline" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" text="Show offline channels">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </CheckBox>
+       <CheckBox fx:id="hideButtons" layoutX="24.0" layoutY="42.0" mnemonicParsing="false" text="Hide Add/Refresh buttons">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </CheckBox>
+       <CheckBox fx:id="enableAuto" layoutX="24.0" layoutY="70.0" mnemonicParsing="false" text="Enable Auto-refreshing">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </CheckBox>
+       <Button fx:id="saveButton" layoutX="127.0" layoutY="155.0" mnemonicParsing="false" text="Save" />
+       <Button fx:id="cancelButton" layoutX="185.0" layoutY="155.0" mnemonicParsing="false" text="Cancel" />
+       <Slider fx:id="timeInterval" layoutX="34.0" layoutY="123.0" max="300.0" min="20.0" minorTickCount="2" prefHeight="14.0" prefWidth="187.0" showTickLabels="true" showTickMarks="true" value="20.0" />
+       <Label layoutX="49.0" layoutY="95.0" prefHeight="17.0" prefWidth="142.0" text="Time interval">
+           <font>
+             <Font size="14.0" />
+           </font>
+       </Label>
+   </children>
 </AnchorPane>
