@@ -45,6 +45,7 @@ public class ControllerWindowStyle {
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.initStyle(StageStyle.UTILITY);
+                stage.setAlwaysOnTop(true);
                 stage.show();
             } catch (IOException e1) {}
         });
@@ -58,6 +59,7 @@ public class ControllerWindowStyle {
                 addWindow.setScene(scene);
                 addWindow.setResizable(false);
                 addWindow.initStyle(StageStyle.UTILITY);
+                addWindow.setAlwaysOnTop(true);
                 addWindow.show();
             } catch (IOException e1) {}
         });
