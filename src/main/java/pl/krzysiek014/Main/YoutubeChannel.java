@@ -143,10 +143,11 @@ public class YoutubeChannel extends AnchorPane {
 
         Rectangle r = new Rectangle(361,80,Color.LIGHTGRAY);
         Label l = new Label(getName());
+        Label title = new Label();
         Label live = new Label();
         ImageView iv = new ImageView(new Image(getThumbnails().getAsJsonObject().get("default").getAsJsonObject().get("url").getAsString()));
 
-        pane.getChildren().addAll(r,l,iv,live);
+        pane.getChildren().addAll(r,l,iv,live,title);
 
         iv.setY(10);
         iv.setFitHeight(80);
@@ -157,14 +158,26 @@ public class YoutubeChannel extends AnchorPane {
         l.setLayoutX(130);
         l.setLayoutY(10);
 
+        title.setLayoutX(130);
+        title.setLayoutY(30);
+        title.setVisible(false);
+
         if(isLive()){
             live.setText("ONLINE    " + String.format("%,d",getViewers()));
+            int length = getTitle().length()>35 ? 35 : getTitle().length();
+            title.setText(getTitle().substring(0,length)+(length==getTitle().length() ? "" : "..."));
             live.setTextFill(Color.RED);
             this.setOnMouseClicked(e->{
                 HostServicesProvider.getInstance().getHostServices().showDocument("https://www.youtube.com/embed/"+getVideoId()+"?autoplay=1");
             });
-            this.setOnMouseEntered(e->r.setFill(Color.valueOf("#9aa7ad")));
-            this.setOnMouseExited(e->r.setFill(Color.LIGHTGRAY));
+            this.setOnMouseEntered(e -> {
+                r.setFill(Color.valueOf("#9aa7ad"));
+                title.setVisible(true);
+            });
+            this.setOnMouseExited(e -> {
+                r.setFill(Color.LIGHTGRAY);
+                title.setVisible(false);
+            });
         }else{
             live.setText("OFFLINE");
             live.setTextFill(Color.BLACK);
