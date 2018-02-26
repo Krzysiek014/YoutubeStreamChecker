@@ -172,7 +172,7 @@ public class YoutubeChannel extends AnchorPane {
             });
             this.setOnMouseEntered(e -> {
                 r.setFill(Color.valueOf("#9aa7ad"));
-                title.setVisible(true);
+                if(Settings.getInstance().getProperty("show-title").equals("true")) title.setVisible(true);
             });
             this.setOnMouseExited(e -> {
                 r.setFill(Color.LIGHTGRAY);
